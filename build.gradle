@@ -1,0 +1,44 @@
+
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'eclipse'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies{
+	compile group: 'org.hibernate', name: 'hibernate-core', version: '4.3.8.Final'
+	compile group: 'org.hibernate', name: 'hibernate-entitymanager', version: '4.3.8.Final'
+	testCompile 'junit:junit:4.4'
+	compile 'com.miglayout:miglayout-swing:4.2'
+	compile 'org.apache.derby:derby:10.11.1.1'
+	compile files('lib/ojdbc6.jar')
+	compile 'org.apache.derby:derbynet:10.11.1.1'
+  }
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.4'
+}
+
+mainClassName = 'z_interfaz.Body'
+
+task ( fatJar, type: Jar) {
+  manifest {
+        attributes 'Main-Class': mainClassName
+    }
+
+  from {
+    configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+  }
+  with jar
+}
+
+task ( ejecutarServidorDerby, type: JavaExec ){
+	main = 'org.apache.derby.drda.NetworkServerControl'
+    classpath = configurations.runtime
+	args '-noSecurityManager', 'start'
+}
+
+// hibernate quiere los recursos en el directorio de las classes
+sourceSets.main.output.resourcesDir = sourceSets.main.output.classesDir

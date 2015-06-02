@@ -1,0 +1,1 @@
+"C:\Program Files\Java\jre1.8.0_45\bin\java.exe" -Dfile.encoding=Cp1252 -classpath bin;lib\ojdbc6.jar z_interfaz.Body
