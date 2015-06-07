@@ -1,0 +1,166 @@
+﻿
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Changes to be committed:
+#	new file:   .gitignore
+#	new file:   .settings/org.eclipse.jdt.core.prefs
+#	new file:   LANZAR.bat
+#	deleted:    Proyecto.jar
+#	new file:   build.gradle
+#	new file:   gradle.properties
+#	new file:   gradle/wrapper/gradle-wrapper.jar
+#	new file:   gradle/wrapper/gradle-wrapper.properties
+#	new file:   gradlew
+#	new file:   gradlew.bat
+#	new file:   lib/antlr-2.7.7.jar
+#	new file:   lib/derby.jar
+#	new file:   lib/dom4j-1.6.1.jar
+#	new file:   lib/hibernate-commons-annotations-4.0.5.Final.jar
+#	new file:   lib/hibernate-core-4.3.8.Final.jar
+#	new file:   lib/hibernate-entitymanager-4.3.8.Final.jar
+#	new file:   lib/hibernate-jpa-2.1-api-1.0.0.Final.jar
+#	new file:   lib/jandex-1.1.0.Final.jar
+#	new file:   lib/javassist-3.18.1-GA.jar
+#	new file:   lib/jboss-logging-3.1.3.GA.jar
+#	new file:   lib/jboss-transaction-api_1.2_spec-1.0.0.Final.jar
+#	new file:   lib/mysql-connector-java-5.1.35-bin.jar
+#	new file:   lib/ojdbc6.jar
+#	new file:   src/main/java/armaduras/Armadura.java
+#	new file:   src/main/java/armaduras/Armadura_Cuero.java
+#	new file:   src/main/java/armaduras/Armadura_Malla.java
+#	new file:   src/main/java/armaduras/Armadura_Placas.java
+#	new file:   src/main/java/armaduras/Sin_Armadura.java
+#	new file:   src/main/java/armas/Arma.java
+#	new file:   src/main/java/armas/Espada_Corta.java
+#	new file:   src/main/java/armas/Espada_Larga.java
+#	new file:   src/main/java/armas/Espada_Orca.java
+#	new file:   src/main/java/armas/Sin_Arma.java
+#	new file:   src/main/java/baseDatosOracle/Chat.java
+#	new file:   src/main/java/baseDatosOracle/GestorChat.java
+#	new file:   src/main/java/baseDatosOracle/GestorHeroes.java
+#	new file:   src/main/java/baseDatosOracle/GestorUsuarios.java
+#	new file:   src/main/java/baseDatosOracle/Heroe.java
+#	new file:   src/main/java/baseDatosOracle/Usuario.java
+#	new file:   src/main/java/datos/Combate.java
+#	new file:   src/main/java/datos/Enemigo.java
+#	new file:   src/main/java/datos/Item.java
+#	new file:   src/main/java/datos/Personaje.java
+#	new file:   src/main/java/datos/Sala.java
+#	new file:   src/main/java/escudos/Escudo.java
+#	new file:   src/main/java/escudos/Escudo_Madera.java
+#	new file:   src/main/java/escudos/Escudo_Metal.java
+#	new file:   src/main/java/escudos/Sin_Escudo.java
+#	new file:   src/main/java/habilidades/Curar.java
+#	new file:   src/main/java/habilidades/Golpe_Concentrado.java
+#	new file:   src/main/java/habilidades/Habilidad.java
+#	new file:   src/main/java/habilidades/Llamar_Goblins.java
+#	new file:   src/main/java/habilidades/Llamar_Orcos.java
+#	new file:   src/main/java/habilidades/Llamar_Orcos_Mejorado.java
+#	new file:   src/main/java/habilidades/Llamarada.java
+#	new file:   src/main/java/habilidades/Torbellino.java
+#	new file:   src/main/java/mazmorra_Orcos/Mazmorra_Orcos.java
+#	new file:   src/main/java/mazmorra_Orcos/_01_Entrada_Principal.java
+#	new file:   src/main/java/mazmorra_Orcos/_02_Hall.java
+#	new file:   src/main/java/mazmorra_Orcos/_03_Vestibulo_Derecho.java
+#	new file:   src/main/java/mazmorra_Orcos/_04_Pasillo.java
+#	new file:   src/main/java/mazmorra_Orcos/_05_Vestibulo_Izquierdo.java
+#	new file:   src/main/java/mazmorra_Orcos/_06_Sangrienta.java
+#	new file:   src/main/java/mazmorra_Orcos/_07_Pictogramas.java
+#	new file:   src/main/java/mazmorra_Orcos/_08_Sacrificios.java
+#	new file:   src/main/java/mazmorra_Orcos/_09_Fuente.java
+#	new file:   src/main/java/mazmorra_Orcos/_10_Sala_Jefe.java
+#	new file:   src/main/java/personajes/Cacique_1.java
+#	new file:   src/main/java/personajes/Cacique_2.java
+#	new file:   src/main/java/personajes/Cacique_3.java
+#	new file:   src/main/java/personajes/Chaman_Goblin.java
+#	new file:   src/main/java/personajes/Chaman_Orco.java
+#	new file:   src/main/java/personajes/Goblin.java
+#	new file:   src/main/java/personajes/Goblin_Esbirro.java
+#	new file:   src/main/java/personajes/Hombre_Rata.java
+#	new file:   src/main/java/personajes/Jefe_Goblin.java
+#	new file:   src/main/java/personajes/Orco.java
+#	new file:   src/main/java/personajes/Orco_Negro.java
+#	new file:   src/main/java/pociones/Pocion.java
+#	new file:   src/main/java/pociones/Pocion_Curativa.java
+#	new file:   src/main/java/pociones/Pocion_Explosiva.java
+#	new file:   src/main/java/pociones/Pocion_Mana.java
+#	new file:   src/main/java/z_interfaz/Body.java
+#	new file:   src/main/java/z_interfaz/CambioBoss.java
+#	new file:   src/main/java/z_interfaz/Final.java
+#	new file:   src/main/java/z_interfaz/Game.java
+#	new file:   src/main/java/z_interfaz/Login.java
+#	new file:   src/main/java/z_interfaz/Messages.java
+#	new file:   src/main/java/z_interfaz/NewHero.java
+#	new file:   src/main/java/z_interfaz/NewUser.java
+#	new file:   src/main/java/z_interfaz/Title.java
+#	new file:   src/main/java/z_interfaz/User.java
+#	new file:   src/main/resources/META-INF/persistence.xml
+#	new file:   src/main/resources/imagenes/contador/1.png
+#	new file:   src/main/resources/imagenes/contador/10.png
+#	new file:   src/main/resources/imagenes/contador/2.png
+#	new file:   src/main/resources/imagenes/contador/3.png
+#	new file:   src/main/resources/imagenes/contador/4.png
+#	new file:   src/main/resources/imagenes/contador/5.png
+#	new file:   src/main/resources/imagenes/contador/6.png
+#	new file:   src/main/resources/imagenes/contador/7.png
+#	new file:   src/main/resources/imagenes/contador/8.png
+#	new file:   src/main/resources/imagenes/contador/9.png
+#	new file:   src/main/resources/imagenes/enemigos/cacique.png
+#	new file:   src/main/resources/imagenes/enemigos/capataz goblin.png
+#	new file:   src/main/resources/imagenes/enemigos/caudillo.jpg
+#	new file:   src/main/resources/imagenes/enemigos/chaman goblin.jpg
+#	new file:   src/main/resources/imagenes/enemigos/chaman goblin.png
+#	new file:   src/main/resources/imagenes/enemigos/chaman orco.jpg
+#	new file:   src/main/resources/imagenes/enemigos/chaman orco.png
+#	new file:   src/main/resources/imagenes/enemigos/garrosh.png
+#	new file:   src/main/resources/imagenes/enemigos/garrosh2.png
+#	new file:   src/main/resources/imagenes/enemigos/garrosh3.png
+#	new file:   src/main/resources/imagenes/enemigos/goblin esbirro.png
+#	new file:   src/main/resources/imagenes/enemigos/goblin.png
+#	new file:   src/main/resources/imagenes/enemigos/goblin2.png
+#	new file:   src/main/resources/imagenes/enemigos/hombre rata.jpg
+#	new file:   src/main/resources/imagenes/enemigos/hombre rata.png
+#	new file:   src/main/resources/imagenes/enemigos/orco.jpg
+#	new file:   src/main/resources/imagenes/enemigos/orco.png
+#	new file:   src/main/resources/imagenes/equipo/armadura cuero.png
+#	new file:   src/main/resources/imagenes/equipo/armadura malla.png
+#	new file:   src/main/resources/imagenes/equipo/armadura placas.png
+#	new file:   src/main/resources/imagenes/equipo/escudo madera.png
+#	new file:   src/main/resources/imagenes/equipo/escudo metal.png
+#	new file:   src/main/resources/imagenes/equipo/espada corta.png
+#	new file:   src/main/resources/imagenes/equipo/espada larga.png
+#	new file:   src/main/resources/imagenes/equipo/espada orca.png
+#	new file:   src/main/resources/imagenes/habilidades/Curar.png
+#	new file:   src/main/resources/imagenes/habilidades/Golpe Concentrado.png
+#	new file:   src/main/resources/imagenes/habilidades/Llamarada.png
+#	new file:   src/main/resources/imagenes/habilidades/Torbellino.png
+#	new file:   src/main/resources/imagenes/heroes/avatar 1.png
+#	new file:   src/main/resources/imagenes/heroes/avatar 2.png
+#	new file:   src/main/resources/imagenes/heroes/avatar 3.png
+#	new file:   src/main/resources/imagenes/heroes/avatar 4.png
+#	new file:   src/main/resources/imagenes/heroes/avatar 5.png
+#	new file:   src/main/resources/imagenes/heroes/avatar 6.png
+#	new file:   src/main/resources/imagenes/pociones/Pocion Curativa.png
+#	new file:   src/main/resources/imagenes/pociones/Pocion Explosiva.png
+#	new file:   src/main/resources/imagenes/pociones/Pocion Mana.png
+#	new file:   src/main/resources/imagenes/salas/1.jpg
+#	new file:   src/main/resources/imagenes/salas/10.jpg
+#	new file:   src/main/resources/imagenes/salas/2.jpg
+#	new file:   src/main/resources/imagenes/salas/3.jpg
+#	new file:   src/main/resources/imagenes/salas/4.jpg
+#	new file:   src/main/resources/imagenes/salas/5.jpg
+#	new file:   src/main/resources/imagenes/salas/6.jpg
+#	new file:   src/main/resources/imagenes/salas/7.jpg
+#	new file:   src/main/resources/imagenes/salas/8.jpg
+#	new file:   src/main/resources/imagenes/salas/9.jpg
+#	new file:   src/main/resources/imagenes/varios/mazmorraOrca.jpg
+#	new file:   src/main/resources/imagenes/varios/muerte.png
+#	new file:   src/main/resources/imagenes/varios/muerto.png
+#	new file:   src/main/resources/imagenes/varios/orc_Icon.png
+#	new file:   src/main/resources/imagenes/varios/sin heroe.png
+#	new file:   src/main/resources/imagenes/varios/victoria.png
+#	new file:   src/main/resources/z_interfaz/messages.properties
+#	new file:   src/main/resources/z_interfaz/messages_es.properties
+#
+
