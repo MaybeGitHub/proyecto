@@ -8,8 +8,8 @@ import habilidades.Torbellino;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dialog;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.Panel;
@@ -126,6 +126,7 @@ public class Game extends JFrame {
 	private ArrayList<JLabel> listaPocionesLabel = new ArrayList<JLabel>();
 	private final Usuario usuarioActual;
 	private JFrame game;
+	private JScrollPane chatScrollPane;
 	private boolean juegoTerminado = false;
 
 	public Game ( final EntityManager em, Heroe hero, ArrayList<Sala> roomList, Usuario usuario, final JPanel centerPanelBody, final JFrame bodyFrame ) {
@@ -160,21 +161,30 @@ public class Game extends JFrame {
 			}
 		});
 
-		chatRefreshTimer = new Timer(100, new ActionListener() {
+		chatRefreshTimer = new Timer(1000, new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent action) {
 				tickDelTimer();
-				if ( Final.isDerrotado() ){
+				
+				if ( Final.isDerrotado() && !juegoTerminado ){
+					Final.setDerrotado(false);
+					juegoTerminado = true;
 					enemigos.clear();
 					siguienteSala();
+					endTurn();
+					cleanEnemiesPanel();
+					updateGamePanel();
 				}
 				
 				if ( Final.isFail() && !juegoTerminado ){
-					turnoEnemigos(1);
-					endTurn();
-					updateGamePanel();
+					Final.setFail(false);
 					juegoTerminado = true;
+					heroe.setPV(0);
+					dead = true;
+					endTurn();
+					cleanEnemiesPanel();
+					updateGamePanel();
 				}
 			}
 		});
@@ -203,7 +213,7 @@ public class Game extends JFrame {
 		gbc_northPanel.gridy = 0;
 		gamePanel.add(northPanel, gbc_northPanel);
 		GridBagLayout gbl_northPanel = new GridBagLayout();
-		gbl_northPanel.columnWidths = new int[]{120, 61, 77, 62, 63, 44, 47, 50, 48, 50, 55, 49, 49, 44, 61, 47, 37, 49, 50, 45, 70, 44, 77, 121, 0};
+		gbl_northPanel.columnWidths = new int[]{120, 43, 77, 88, 21, 69, 38, 28, 74, 54, 32, 61, 50, 26, 92, 55, 21, 66, 50, 45, 102, 79, 43, 121, 0};
 		gbl_northPanel.rowHeights = new int[]{25, 25, 25, 25, 25, 0};
 		gbl_northPanel.columnWeights = new double[]{0.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
 		gbl_northPanel.rowWeights = new double[]{0.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
@@ -465,7 +475,7 @@ public class Game extends JFrame {
 		gbc_usersLabel.gridy = 0;
 		chatPanel.add(usersLabel, gbc_usersLabel);
 
-		JScrollPane chatScrollPane = new JScrollPane();
+		chatScrollPane = new JScrollPane();
 		chatScrollPane.setFocusable(false);
 		chatScrollPane.setBorder(new MatteBorder(0, 1, 1, 1, (Color) new Color(0, 0, 255)));
 		GridBagConstraints gbc_chatScrollPane = new GridBagConstraints();
@@ -642,7 +652,7 @@ public class Game extends JFrame {
 					if ( enemigos.size() != 0 ){
 						turnoEnemigos(1);
 					}else{
-						siguienteSala();						
+						siguienteSala();
 					}				
 					endTurn();
 					cleanEnemiesPanel();
@@ -1352,6 +1362,10 @@ public class Game extends JFrame {
 			}
 		});
 
+		if( heroe.getSala() == mazmorra.size() - 1 ){
+			bossFinal = true;
+		}
+		
 		JPanel equipoPanel = new JPanel();
 		equipoPanel.setFocusable(false);
 		GridBagConstraints gbc_equipoPanel = new GridBagConstraints();
@@ -1433,6 +1447,7 @@ public class Game extends JFrame {
 		gbc_eventosScrollPane.gridx = 0;
 		gbc_eventosScrollPane.gridy = 0;		
 		eventosScrollPane = new JScrollPane();
+		eventosScrollPane.setAutoscrolls(true);
 		eventosScrollPane.setFocusable(false);
 		eventosScrollPane.setBorder(new LineBorder(new Color(255, 165, 0)));
 		southPanel.add(eventosScrollPane, gbc_eventosScrollPane);
@@ -1669,6 +1684,7 @@ public class Game extends JFrame {
 		}
 		almacenEventos.addAll(eventos);
 		listaEventos.setModel(miModeloLista(almacenEventos));
+		eventosScrollPane.getVerticalScrollBar().setValue(eventosScrollPane.getVerticalScrollBar().getMaximum());
 	}
 
 	private void updateHeroe() {
@@ -1705,6 +1721,8 @@ public class Game extends JFrame {
 		if ( bossFinal ){
 			Cacique_1 boss1 = null;
 			Cacique_2 boss2 = null;
+			Cacique_3 boss3 = null;
+			
 			for( Enemigo enemigo : enemigos ){
 				if ( enemigo instanceof Cacique_1 ){
 					boss1 = (Cacique_1) enemigo;
@@ -1713,6 +1731,10 @@ public class Game extends JFrame {
 
 				if ( enemigo instanceof Cacique_2 ){
 					boss2 = (Cacique_2) enemigo;
+				}
+				
+				if ( enemigo instanceof Cacique_3 ){
+					boss3 = (Cacique_3) enemigo;
 				}
 			}
 
@@ -1733,6 +1755,13 @@ public class Game extends JFrame {
 					enemigos.clear();
 					enemigos.add(new Cacique_3(heroe, enemigos, game));
 					elegirSiguienteEnemigo();
+				}
+			}
+			
+			if ( boss3 != null ){
+				if ( boss3.getPV() == 1 && !juegoTerminado ){
+					Final f = new Final(this);
+					f.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);					
 				}
 			}
 		}
@@ -1957,6 +1986,7 @@ public class Game extends JFrame {
 	private void updateChatList() {
 		rellenoAlmacen();
 		chatList.setModel(miModeloLista(almacenChat));
+		chatScrollPane.getVerticalScrollBar().setValue(chatScrollPane.getVerticalScrollBar().getMaximum());
 	}
 
 	private void rellenoAlmacen(){
@@ -1971,8 +2001,7 @@ public class Game extends JFrame {
 		for ( Chat chat : mensajes ){
 			almacenChat.add(chat.getMensaje());
 			chat.setLeido(true);			
-			gc.update(chat);
-			
+			gc.update(chat);			
 		}
 		et.commit();
 	}
@@ -1982,7 +2011,6 @@ public class Game extends JFrame {
 		centerPanelBody.removeAll();
 		bodyFrame.setVisible(true);
 		User user = new User( em, usuarioActual, centerPanelBody, bodyFrame );
-		user.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 100));
 		centerPanelBody.add(user, BorderLayout.CENTER);
 		centerPanelBody.revalidate();
 		centerPanelBody.repaint();

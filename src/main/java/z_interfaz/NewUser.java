@@ -79,7 +79,7 @@ public class NewUser extends JPanel {
 				}
 			}
 		});
-
+		
 		passLabel = new JLabel(Messages.getString("NewUser.Password")); //$NON-NLS-1$
 		passLabel.setFont(new Font("Tahoma", Font.BOLD, 11)); //$NON-NLS-1$
 		passLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -114,7 +114,7 @@ public class NewUser extends JPanel {
 		confirmPasswordLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		confirmPasswordLabel.setFont(new Font("Tahoma", Font.BOLD, 11)); //$NON-NLS-1$
 
-		newUserPane.add(confirmPasswordLabel, "cell 0 3,growx,aligny center"); //$NON-NLS-1$
+		newUserPane.add(confirmPasswordLabel, "cell 0 3,grow"); //$NON-NLS-1$
 
 		JButton backButton = new JButton(Messages.getString("NewUser.Back")); //$NON-NLS-1$
 		backButton.setMinimumSize(new Dimension(79, 23));
@@ -126,6 +126,17 @@ public class NewUser extends JPanel {
 			}
 		});
 
+		backButton.setPreferredSize(new Dimension(0, 0));
+		backButton.addKeyListener(new KeyAdapter() {
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if ( e.getKeyCode() == KeyEvent.VK_ENTER ){
+					cargarLogin(centerPanel, bodyFrame, false);
+				}
+			}
+		});
+		
 		confirmPasswordField = new JPasswordField();
 		confirmPasswordField.setToolTipText(Messages.getString("NewUser.confirmPasswordField.toolTipText")); //$NON-NLS-1$
 		confirmPasswordField.setHorizontalAlignment(SwingConstants.LEFT);
@@ -149,7 +160,7 @@ public class NewUser extends JPanel {
 				}
 			}
 		});
-		backButton.setPreferredSize(new Dimension(0, 0));
+		
 		newUserPane.add(backButton, "cell 0 5 2 1,alignx right,growy"); //$NON-NLS-1$
 
 		JButton createButton = new JButton(Messages.getString("NewUser.Create")); //$NON-NLS-1$

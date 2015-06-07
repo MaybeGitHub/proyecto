@@ -3,7 +3,6 @@ package personajes;
 import habilidades.Golpe_Concentrado;
 import habilidades.Habilidad;
 
-import java.awt.Dialog;
 import java.awt.Window;
 import java.util.ArrayList;
 
@@ -13,7 +12,6 @@ import javax.swing.JOptionPane;
 
 import baseDatosOracle.Heroe;
 import pociones.Pocion;
-import z_interfaz.Final;
 import armaduras.Armadura;
 import armaduras.Armadura_Placas;
 import armaduras.Sin_Armadura;
@@ -29,8 +27,6 @@ import escudos.Sin_Escudo;
 public class Cacique_3 extends Enemigo {
 
 	private Heroe heroe;
-	private ArrayList<Enemigo> enemigos;
-	private boolean muerto = false;
 	private boolean dichoTextoPrimeraFase = false;
 	private boolean dichoTextoSegundaFase = false;
 	private boolean dichoTextoTerceraFase = false;
@@ -55,19 +51,19 @@ public class Cacique_3 extends Enemigo {
 		setSkillCount(0);
 		setSkillCountMax(6);
 		this.heroe = heroe;
-		this.enemigos = enemigos;
 		this.owner = owner;
 	}
 
 	@Override
 	public ArrayList<String> skill(Enemigo enemigo, ArrayList<Enemigo> enemigos, Heroe heroe, int bonusDef) {
 		ArrayList<String> eventos = new ArrayList<String>();
-		new Golpe_Concentrado().mecanica(enemigo, heroe, bonusDef);		
+		eventos.add(((Golpe_Concentrado)getHabilidades().get(0)).mecanica(this, heroe, bonusDef));
 		return eventos;
 	}
 
 	@Override
 	protected void crearHabilidades() {
+		getHabilidades().add(new Golpe_Concentrado());
 	}
 
 	@Override
@@ -108,11 +104,8 @@ public class Cacique_3 extends Enemigo {
 	
 	@Override
 	public void setPV(int vida){		
-		if ( vida <= 1 && !muerto){
+		if ( vida <= 1 ){
 			this.PV = 1;
-			muerto = true;
-			Final f = new Final(enemigos, heroe, owner);
-			f.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
 		}else if ( vida >= getPVMax() ){
 			PV  = getPVMax();
 		}else{
@@ -121,19 +114,16 @@ public class Cacique_3 extends Enemigo {
 		
 		if ( getPV() < getPVMax()*3/4 && !dichoTextoPrimeraFase ){
 			Escudo sinEscudo = new Sin_Escudo();
-			setEscudo(sinEscudo);
 			heroe.setEscudo(sinEscudo.getTipoEscudoBBDD());			
 			JOptionPane.showMessageDialog(owner, primerCuartoVida());
 			dichoTextoPrimeraFase = true;
 		}else if ( getPV() < getPVMax()/2 && !dichoTextoSegundaFase ){
 			Armadura sinArmadura = new Sin_Armadura();
-			setArmadura(sinArmadura);
 			heroe.setArmadura(sinArmadura.getTipoArmaduraBBDD());
 			JOptionPane.showMessageDialog(owner, mitadVida());
 			dichoTextoSegundaFase = true;
 		}else if ( getPV() < getPVMax()/4 && !dichoTextoTerceraFase ){
 			Arma sinArma = new Sin_Arma();
-			setArma(sinArma);
 			heroe.setArma(sinArma.getTipoArmaBBDD());
 			JOptionPane.showMessageDialog(owner, ultimoCuartoVida());
 			dichoTextoTerceraFase = true;

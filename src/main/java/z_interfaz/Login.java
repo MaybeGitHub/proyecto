@@ -128,6 +128,14 @@ public class Login extends JPanel {
 		});
 
 		newuserButton = new JButton(Messages.getString("Login.NewUser")); //$NON-NLS-1$
+		newuserButton.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if ( e.getKeyCode() == KeyEvent.VK_ENTER ){
+					cargarNuevoUser(centerPanel, bodyFrame);
+				}
+			}
+		});
 		newuserButton.setPreferredSize(Body.dimensionBotones);
 		newuserButton.addMouseListener(new MouseAdapter() {
 			@Override
@@ -155,6 +163,24 @@ public class Login extends JPanel {
 				}
 			}
 		});
+		
+		loginButton.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if ( e.getKeyCode() == KeyEvent.VK_ENTER ){
+					if ( existeUsuarioYNoEstaConectado() ){
+						if ( passwordCorrecto() ){
+							cargarUser(centerPanel, bodyFrame);
+						}else{
+							errorPassword();
+						}
+					}else{
+						errorUser();
+					}
+				}
+			}
+		});
+		
 	}
 
 	private void obtenerUsuario() {

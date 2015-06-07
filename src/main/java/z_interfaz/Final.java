@@ -10,12 +10,8 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 
-import baseDatosOracle.Heroe;
-import datos.Enemigo;
-
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
 
 public class Final extends JDialog {
 
@@ -28,7 +24,7 @@ public class Final extends JDialog {
 	private static boolean derrotado = false;
 	private static boolean fail = false;
 	
-	public Final(final ArrayList<Enemigo> enemigos, final Heroe heroe, Window owner) {
+	public Final( Window owner ) {
 		super(owner);
 		setTitle("Dungeon Master"); //$NON-NLS-1$
 		setResizable(false);
@@ -65,7 +61,7 @@ public class Final extends JDialog {
 					case 3: darGolpeFinalButton.setText(Messages.getString("Final.Intento1")); intentos--; break; //$NON-NLS-1$
 					case 2: darGolpeFinalButton.setText(Messages.getString("Final.Intento2")); intentos--; break; //$NON-NLS-1$
 					case 1: darGolpeFinalButton.setText(Messages.getString("Final.Intento3")); intentos--; break; //$NON-NLS-1$
-					case 0: heroe.setPV(0); fail = true; dispose(); break;
+					case 0: fail = true; dispose(); break;
 					}
 				}
 			}
@@ -108,7 +104,15 @@ public class Final extends JDialog {
 		return derrotado;
 	}
 	
+	public static void setDerrotado( boolean estaDerrotado ) {
+		derrotado = estaDerrotado;
+	}
+	
 	public static boolean isFail() {
 		return fail;
+	}
+	
+	public static void setFail( boolean hasFallado ) {
+		fail = hasFallado;
 	}
 }

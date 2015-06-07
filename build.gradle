@@ -1,4 +1,3 @@
-
 apply plugin: 'java'
 apply plugin: 'application'
 apply plugin: 'eclipse'
@@ -22,6 +21,8 @@ task wrapper(type: Wrapper) {
 }
 
 mainClassName = 'z_interfaz.Body'
+
+compileJava.options.encoding = 'ISO-8859-1'
 
 task ( fatJar, type: Jar) {
   manifest {

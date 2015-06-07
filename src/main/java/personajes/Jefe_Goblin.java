@@ -21,7 +21,7 @@ public class Jefe_Goblin extends Enemigo {
 
 	public Jefe_Goblin() {
 		setNombre("Inspector Goblin");
-		setNivel(3);
+		setNivel(10);
 		setFuerza(3);
 		setDestreza(2);
 		setInteligencia(2);

@@ -109,10 +109,6 @@ public class User extends JPanel{
 		hero1EraseButton = new JButton(Messages.getString("User.Erase2"));
 		hero1EraseButton.setPreferredSize(new Dimension(60, 25));
 		hero1EraseButton.setMaximumSize(new Dimension(70, 30));
-		hero1EraseButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		hero1EraseButton.setVisible(false);
 		userPanel.add(hero1EraseButton, "cell 0 2"); //$NON-NLS-1$
 
