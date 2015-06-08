@@ -16,7 +16,7 @@ public class Espada_Corta extends Arma{
 	}
 
 	@Override
-	public int daño() {
+	public int dano() {
 		return 1;
 	}
 

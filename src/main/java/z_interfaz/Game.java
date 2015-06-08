@@ -1850,7 +1850,7 @@ public class Game extends JFrame {
 		dexValueLabel.setText(String.valueOf(heroe.getDestreza()));
 		intValueLabel.setText(String.valueOf(heroe.getInteligencia()));
 		combatValueLabel.setText(String.valueOf(heroe.getDestreza()));
-		damageValueLabel.setText(String.valueOf(arma.daño() + heroe.getFuerza()));
+		damageValueLabel.setText(String.valueOf(arma.dano() + heroe.getFuerza()));
 		atkValueLabel.setText(String.valueOf(heroe.getFuerza()));
 		defValueLabel.setText(String.valueOf( escudo.bonusDef() + armadura.bonusArmor() + heroe.getDestreza() / 2 ));
 		powerValueLabel.setText(String.valueOf(heroe.getInteligencia()));

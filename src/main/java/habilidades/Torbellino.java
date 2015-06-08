@@ -23,11 +23,11 @@ public class Torbellino extends Habilidad {
 	public String mecanica(Heroe heroe, ArrayList<Enemigo> enemigos) {
 		Arma arma = Arma.creaAPartirDeTipoBBDD(heroe.getArma());
 		for ( Enemigo enemigo : enemigos ){
-			int dañoHeroe = heroe.getFuerza()*2 + heroe.getDestreza()*2 + arma.daño();
+			int danoHeroe = heroe.getFuerza()*2 + heroe.getDestreza()*2 + arma.dano();
 			int resistenciaEnemigo = enemigo.getEscudo().bonusDef() + enemigo.getArmadura().bonusArmor() + enemigo.getDestreza();			
-			int dañoTotal = dañoHeroe - resistenciaEnemigo;
-			if ( dañoTotal > 0 ){				
-				enemigo.setPV(enemigo.getPV() - dañoTotal );	
+			int danoTotal = danoHeroe - resistenciaEnemigo;
+			if ( danoTotal > 0 ){				
+				enemigo.setPV(enemigo.getPV() - danoTotal );	
 			}
 		}
 		return descripcionHeroe();

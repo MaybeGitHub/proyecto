@@ -100,10 +100,10 @@ public class Combate {
 	public ArrayList<String> atacarConArma(Enemigo enemigo, ArrayList<Enemigo> enemies) {
 		ArrayList<String> eventos = new ArrayList<String>();
 		int resistencia = enemigo.getArmadura().bonusArmor() + enemigo.getEscudo().bonusDef();
-		int daño = heroe.getAtaque()*3 + heroe.getFuerza() + heroe.getDestreza() - resistencia;
-		if ( daño >= 1 ){			
-			enemigo.setPV(enemigo.getPV() - daño);
-			eventos.add("Golpeas a " +  enemigo.getNombre() + ": " + daño);
+		int dano = heroe.getAtaque()*3 + heroe.getFuerza() + heroe.getDestreza() - resistencia;
+		if ( dano >= 1 ){			
+			enemigo.setPV(enemigo.getPV() - dano);
+			eventos.add("Golpeas a " +  enemigo.getNombre() + ": " + dano);
 			if ( enemigo.getPV() <= 0 ){
 				enemies.remove(enemigo);
 				heroe.setExperiencia(heroe.getExperiencia()+enemigo.getNivel());
@@ -117,12 +117,12 @@ public class Combate {
 
 	public ArrayList<String> atacarConArma(Enemigo enemigo, int bonusDef){
 		ArrayList<String> eventos = new ArrayList<String>();
-		int daño = (enemigo.getArma().daño() + enemigo.getFuerza() - heroe.getDefensa()) / bonusDef;
-		if ( daño >= 1 ){
-			heroe.setPV(heroe.getPV() - daño);
-			eventos.add("Te golpea " +  enemigo.getNombre() + " y te hace " + daño + " puntos de daño");			
+		int dano = (enemigo.getArma().dano() + enemigo.getFuerza() - heroe.getDefensa()) / bonusDef;
+		if ( dano >= 1 ){
+			heroe.setPV(heroe.getPV() - dano);
+			eventos.add("Te golpea " +  enemigo.getNombre() + " y te hace " + dano + " puntos de dano");			
 		}else{
-			eventos.add("Tu armadura bloquea por completo el daño del " + enemigo);
+			eventos.add("Tu armadura bloquea por completo el dano del " + enemigo);
 		}
 		return eventos;
 	}
@@ -147,7 +147,7 @@ public class Combate {
 			if ( item instanceof Arma ){
 				Arma armaHeroe = Arma.creaAPartirDeTipoBBDD(heroe.getArma());
 				Arma armaLoot = Arma.creaAPartirDeTipoBBDD(((Arma) item).getTipoArmaBBDD());
-				if ( armaLoot.daño() > armaHeroe.daño() ){
+				if ( armaLoot.dano() > armaHeroe.dano() ){
 					heroe.setArma(((Arma) item).getTipoArmaBBDD());
 					eventos.add("Te equipas " + item);
 				}

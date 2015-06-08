@@ -7,7 +7,7 @@ public abstract class Arma extends Item {
 	public Arma() {
 	}
 	
-	public abstract int daño();
+	public abstract int dano();
 	
 	public abstract String getTipoArmaBBDD();
 

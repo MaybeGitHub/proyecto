@@ -25,7 +25,7 @@ public class GestorChat {
 	}
 
 	public ArrayList<Chat> findByUsuarioYNoLeido(Usuario usuario, boolean leido)  {
-		TypedQuery<Chat> query = em.createQuery("from Chat where dueño=:usuario and leido=:leido", Chat.class);
+		TypedQuery<Chat> query = em.createQuery("from Chat where dueno=:usuario and leido=:leido", Chat.class);
 		query.setParameter("usuario", usuario );
 		query.setParameter("leido", leido);
 		ArrayList<Chat> resultList = new ArrayList<Chat>();

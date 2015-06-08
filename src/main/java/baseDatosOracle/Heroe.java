@@ -26,7 +26,7 @@ public class Heroe {
 	private int idHeroe;
 	
 	@ManyToOne
-    @JoinColumn(name="dueño")
+    @JoinColumn(name="dueno")
 	private Usuario usuario;
 	
 	@Column private String nombre;
@@ -185,7 +185,7 @@ public class Heroe {
 
 	public void setArma(String arma) {
 		this.arma = arma;
-		setAtaque(Arma.creaAPartirDeTipoBBDD(arma).daño());
+		setAtaque(Arma.creaAPartirDeTipoBBDD(arma).dano());
 	}
 
 	public String getArmadura() {

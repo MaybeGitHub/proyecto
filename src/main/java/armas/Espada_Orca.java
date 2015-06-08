@@ -16,7 +16,7 @@ public class Espada_Orca extends Arma{
 	}
 
 	@Override
-	public int daño() {
+	public int dano() {
 		return 3;
 	}
 

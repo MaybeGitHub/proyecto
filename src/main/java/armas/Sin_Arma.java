@@ -15,7 +15,7 @@ public class Sin_Arma extends Arma{
 	}
 
 	@Override
-	public int daño() {
+	public int dano() {
 		return 0;
 	}
 

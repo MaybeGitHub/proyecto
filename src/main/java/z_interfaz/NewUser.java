@@ -68,7 +68,7 @@ public class NewUser extends JPanel {
 			public void keyPressed(KeyEvent e) {
 				if ( e.getKeyCode() == KeyEvent.VK_ENTER ){
 					if ( !existeUsuario() && !usernameField.getText().equals("") ){ //$NON-NLS-1$
-						if ( contraseñasIguales() ){
+						if ( contrasenasIguales() ){
 							cargarLogin(centerPanel, bodyFrame, true);
 						}else{
 							errorPassword();
@@ -98,7 +98,7 @@ public class NewUser extends JPanel {
 			public void keyPressed(KeyEvent e) {
 				if ( e.getKeyCode() == KeyEvent.VK_ENTER ){
 					if ( !existeUsuario() && !usernameField.getText().equals("") ){ //$NON-NLS-1$
-						if ( contraseñasIguales() ){
+						if ( contrasenasIguales() ){
 							cargarLogin(centerPanel, bodyFrame, true);
 						}else{
 							errorPassword();
@@ -149,7 +149,7 @@ public class NewUser extends JPanel {
 			public void keyPressed(KeyEvent e) {
 				if ( e.getKeyCode() == KeyEvent.VK_ENTER ){
 					if ( !existeUsuario() && !usernameField.getText().equals("") ){ //$NON-NLS-1$
-						if ( contraseñasIguales() ){
+						if ( contrasenasIguales() ){
 							cargarLogin(centerPanel, bodyFrame, true);
 						}else{
 							errorPassword();
@@ -171,7 +171,7 @@ public class NewUser extends JPanel {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				if ( !existeUsuario() && !usernameField.getText().equals("") ){ //$NON-NLS-1$
-					if ( contraseñasIguales() ){
+					if ( contrasenasIguales() ){
 						cargarLogin(centerPanel, bodyFrame, true);
 					}else{
 						errorPassword();
@@ -188,7 +188,7 @@ public class NewUser extends JPanel {
 			public void keyPressed(KeyEvent e) {
 				if ( e.getKeyCode() == KeyEvent.VK_ENTER ){
 					if ( !existeUsuario() && !usernameField.getText().equals("") ){ //$NON-NLS-1$
-						if ( contraseñasIguales() ){
+						if ( contrasenasIguales() ){
 							cargarLogin(centerPanel, bodyFrame, true);
 						}else{
 							errorPassword();
@@ -226,7 +226,7 @@ public class NewUser extends JPanel {
 		et.commit();
 	}
 
-	private boolean contraseñasIguales() {
+	private boolean contrasenasIguales() {
 		return String.valueOf(passwordField.getPassword()).equals(String.valueOf(confirmPasswordField.getPassword())) && !String.valueOf(confirmPasswordField.getPassword()).equals(""); //$NON-NLS-1$
 	}
 

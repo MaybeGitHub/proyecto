@@ -39,7 +39,7 @@ public class GestorHeroes {
 	}
 
 	public List<Heroe> findByUsuario(Usuario usuario)  {
-		TypedQuery<Heroe> query = _em.createQuery("from Heroe where dueño=:usuario", Heroe.class);
+		TypedQuery<Heroe> query = _em.createQuery("from Heroe where dueno=:usuario", Heroe.class);
 		query.setParameter("usuario", usuario );
 		ArrayList<Heroe> resultList = new ArrayList<Heroe>();
 		resultList.addAll(query.getResultList());
